@@ -1,0 +1,112 @@
+Getting started with Prometheus 
+
+-- 
+
+so ellon says we will run each instance of prometheus in each environment, each prometheus for each dev, test, staging and production 
+prometheus is a cross-platform software which it can run same on both windows and linux
+
+components of prometheus - scheduler, time series database ( to store all the metrics collected ), simple web UI,  prometheus query language ( Prometheus has its own query language, because time series data doesn't really fit well with standard SQL, and there's an HTTP API running in the Prometheus server, which lets you run those queries ). 
+
+any system which provides metrics needs to run an exporter... the job of exporter is to provide a metric end point, prometheus uses this metric end point to collect data 
+so the system can be anything like linux or windows or website, the process is to run exporter and access that metric end point to collect data 
+
+for this, ellon going to show four monitoring systems, a linux and windows server, a batch process in linux and a website in windows... to this ellon explained some tech stuff which you didnt get, please wtch that again ( why prometheus is awesome )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Monitoring containerised app health with docker 
+
+---
+
+difference between monitroing apps on running containers and monitoring apps on running servers -> in servers, we install tools like nagios and SCOM in the server running the app and push those to the centralised server. while in containerised apps, each container running a part of our app will have a metric end point. we need to access that end point. so prometheus will access this metric end point which is a rest api and collects the metric and shows us. it will integrate with grafana and shows us the metrics in a dashboard format 
+
+[author-> I'm running my application in a Docker Swarm cluster with Linux and Windows nodes. I have multiple services running, which form different parts of my application. This is a Java web app and this is a .NET web app. Both of those are deployed for high availability running across two containers each. The other services are my Prometheus server and Grafana server, each running in a single container. ]
+for the java and .net app described above by author, there is metrics end point for both of them. we dont know how it came for now, both that is the end point which prometheus is using to create a dashboard in grafana. to get the endpoint just give /metric to the app end point 
+
+there are three main components for the monitoring, those are 
+a metric provider in each container running a part of our app, a metric server which reads the metric ( prometheus), a server which visualises those metric (grafana). prometheus and grafana are available as containers too 
+
+prometheus will use a basic yaml file to get the metrics. we need to define whatever it need to collect in that yaml file.
+
+for the security purposes, its better to run prometheus in a container, so lets run prometheus inside a container 
+
+we need to configure prometheus through a prometheus file  and we need to give containers as scraped targets in that file. also, we need to make a schedule on how often prometheus makes http requests to the metrics endpoints in a container 
+we need to give target in prometheus file giving the container name and port 
+
+generally, the containers in the network talk each other using dns  with the container name for one to one & service name for one to swarm mode cluster 
+
+
+
+------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

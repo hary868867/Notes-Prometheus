@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+
+  java:
+    image: microsoft/iis:nanoserver
+
+  prometheus:
+    image: psmonitoring/prometheus:v2.3.1-windowsservercore
+    build:
+      context: .
+      dockerfile: docker/prometheus/Dockerfile.windows
+    ports:
+    - "9090:9090"
+
+  grafana:
+    image: psmonitoring/grafana:5.2.1-windowsservercore
+    build:
+      context: .
+      dockerfile: docker/grafana/Dockerfile.windows
+    ports:
+    - "3000:3000"
+
+networks:
+  app-net:
+    external:
+      name: nat

@@ -1,0 +1,7 @@
+# java
+**/target/
+
+# netfx
+**/obj/
+**/bin/
+**/packages/

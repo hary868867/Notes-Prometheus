@@ -1,0 +1,2 @@
+FROM microsoft/nanoserver:sac2016
+RUB echo 'psmonitoring' > test.txt
