@@ -3,7 +3,7 @@
 git remote remove origin
 commit='first push of everything'
 #reponame=''
-url="https://github.com/hary867868/Notes-$1.git"
+url="https://github.com/hary868867/Notes-$1.git"
 git init
 git add .
 git commit -m "$commit"
