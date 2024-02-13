@@ -1,9 +1,9 @@
 #!/bin/bash
 
 git remote remove origin
-commit='third push of everything'
+commit='first push of everything'
 #reponame=''
-url="https://github.com/hary8678/Notes-$1.git"
+url="https://github.com/hary867868/Notes-$1.git"
 git init
 git add .
 git commit -m "$commit"
